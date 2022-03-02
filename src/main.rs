@@ -12,7 +12,7 @@ use argparse::{ArgumentParser, Store};
 mod config_structs;
 
 
-fn get_timestamp(gts: i64) -> String {
+fn get_ch_timestamp(gts: i64) -> String {
     let _c_starttime = Utc.ymd(1601, 1, 1).and_hms_milli(0, 0, 0, 0);
     let _d = Duration::microseconds(gts);
     return  (_c_starttime + _d).to_string() ;
@@ -25,6 +25,10 @@ fn get_moz_ts(mts: i64) -> String {
     return d.to_string();
 }
 
+fn get_ts(ts: i64) -> String {
+    let dt_ts = DateTime::<Utc>::from_utc(NaiveDateTime::from_timestamp(ts,0), Utc);
+    return dt_ts.to_string();
+}
 
 fn get_table_data(query: &str, infile: &str, output_path: &str, fields: Vec<config_structs::Field>) -> i32 {
     let connection = sqlite::open(infile).unwrap();
@@ -48,6 +52,9 @@ fn get_table_data(query: &str, infile: &str, output_path: &str, fields: Vec<conf
             fname1 += "_dtutc";
             colnames.push(fname1);
         } else if f.coltype == "moz_ts" {
+            fname1 += "_dtutc";
+            colnames.push(fname1);
+        }else if f.coltype == "timestamp" {
             fname1 += "_dtutc";
             colnames.push(fname1);
         }
@@ -80,7 +87,7 @@ fn get_table_data(query: &str, infile: &str, output_path: &str, fields: Vec<conf
 
             if f.coltype == "chrome_ts"{
                 let tsval :i64 = statement.read::<i64>(idx).unwrap();
-                let dtutc = get_timestamp(tsval);
+                let dtutc = get_ch_timestamp(tsval);
                 let str_dtutc = &dtutc.replace(" UTC","");
                 rowdata.push(str_dtutc.to_string());
             }
@@ -91,6 +98,16 @@ fn get_table_data(query: &str, infile: &str, output_path: &str, fields: Vec<conf
                     tsval = statement.read::<i64>(idx).unwrap();
                 }
                 let dtutc = get_moz_ts(tsval);
+                let str_dtutc = &dtutc.replace(" UTC","");
+                rowdata.push(str_dtutc.to_string());
+            }
+
+            if f.coltype == "timestamp" {
+                let mut tsval: i64 = 0;
+                if colval_is_null == false {
+                    tsval = statement.read::<i64>(idx).unwrap();
+                }
+                let dtutc = get_ts(tsval);
                 let str_dtutc = &dtutc.replace(" UTC","");
                 rowdata.push(str_dtutc.to_string());
             }
