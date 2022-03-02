@@ -21,3 +21,10 @@ tool for dumping sqlite data based on a provided config file
         }]
 }
 ~~~
+
+
+#### usage
+
+~~~bash
+sqlitedump -i sample/ActivitiesCache.db -o output1.csv -t ActivitiesCache -c config/win_timeline.json
+~~~
