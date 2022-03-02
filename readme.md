@@ -1,5 +1,6 @@
 
-tool for dumping sqlite data based on a provided config file
+Tool for dumping sqlite data based on a provided config file. 
+Does minimal transformations for datetime timestamps 
 
 #### config file format (json)
 
