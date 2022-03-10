@@ -152,6 +152,21 @@
                     {"name":"site_name", "ord":19,"coltype":"str", "nullable":1}
                 ]
             }
+        },
+        {
+            "name":"edge_urls",
+            "config":{
+                "query":"select id, url, title, visit_count, typed_count, last_visit_time, hidden from urls",
+                "fields": [
+                    {"name":"id", "ord":0,"coltype":"str", "nullable":1},
+                    {"name":"url", "ord":1,"coltype":"str", "nullable":1},
+                    {"name":"title", "ord":2,"coltype":"str", "nullable":1},
+                    {"name":"visit_count", "ord":3,"coltype":"str", "nullable":1},
+                    {"name":"typed_count", "ord":4,"coltype":"str", "nullable":1},
+                    {"name":"last_visit_time", "ord":5,"coltype":"chrome_ts", "nullable":1},
+                    {"name":"hidden", "ord":6,"coltype":"str", "nullable":1}
+                ]
+            }
         }
     ]
 }
