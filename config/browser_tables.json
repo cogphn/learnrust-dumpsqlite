@@ -154,6 +154,37 @@
             }
         },
         {
+            "name":"moz_annos",
+            "config": {
+                "query": "select a.url, a.title, a.rev_host, a.visit_count, a.hidden, a.typed, a.frecency, a.last_visit_date, a.guid, a.foreign_count, a.url_hash, a.description, a.preview_image_url, a.origin_id, a.site_name, b.id, b.anno_attribute_id, b.content, b.flags, b.expiration, b.type, b.dateAdded, b.lastModified from moz_places a join moz_annos b on a.id=b.place_id",
+                "fields": [
+                    {"name":"url", "ord":0,"coltype":"str", "nullable":1},
+                    {"name":"title", "ord":1,"coltype":"str", "nullable":1},
+                    {"name":"rev_host", "ord":2,"coltype":"str", "nullable":1},
+                    {"name":"visit_count", "ord":3,"coltype":"str", "nullable":1},
+                    {"name":"hidden", "ord":4,"coltype":"str", "nullable":1},
+                    {"name":"typed", "ord":5,"coltype":"str", "nullable":1},
+                    {"name":"frecency", "ord":6,"coltype":"str", "nullable":1},
+                    {"name":"last_visit_date", "ord":7,"coltype":"moz_ts", "nullable":1},
+                    {"name":"guid", "ord":8,"coltype":"str", "nullable":1},
+                    {"name":"foreign_count", "ord":9,"coltype":"str", "nullable":1},
+                    {"name":"url_hash", "ord":10,"coltype":"str", "nullable":1},
+                    {"name":"description", "ord":11,"coltype":"str", "nullable":1},
+                    {"name":"preview_image_url", "ord":12,"coltype":"str", "nullable":1},
+                    {"name":"origin_id", "ord":13,"coltype":"str", "nullable":1},
+                    {"name":"site_name", "ord":14,"coltype":"str", "nullable":1},
+                    {"name":"id", "ord":15,"coltype":"str", "nullable":1},
+                    {"name":"anno_attribute_id", "ord":16,"coltype":"str", "nullable":1},
+                    {"name":"content", "ord":17,"coltype":"str", "nullable":1},
+                    {"name":"flags", "ord":18,"coltype":"str", "nullable":1},
+                    {"name":"expiration","ord":19,"coltype":"moz_ts", "nullable":1},
+                    {"name":"type", "ord":20,"coltype":"str", "nullable":1},
+                    {"name":"dateAdded", "ord":21,"coltype":"moz_ts", "nullable":1},
+                    {"name":"lastModified", "ord":22,"coltype":"moz_ts", "nullable":1}
+                ]
+            }
+        },
+        {
             "name":"edge_urls",
             "config":{
                 "query":"select id, url, title, visit_count, typed_count, last_visit_time, hidden from urls",
