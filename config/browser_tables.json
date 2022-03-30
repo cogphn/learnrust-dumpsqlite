@@ -104,7 +104,7 @@
         {
             "name":"moz_places",
             "config":{
-                "query":"select id,url,title,rev_host,visit_count,hidden,typed,frecency, last_visit_date,guid,foreign_count,url_hash,description,preview_image_url,origin_id,site_name from moz_places",
+                "query":"select id,url,title,rev_host,visit_count,hidden,typed,frecency, last_visit_date,guid,foreign_count,url_hash,description,preview_image_url,origin_id from moz_places",
                 "fields":[
                     {"name":"id", "ord":0, "coltype":"str", "nullable":0},
                     {"name":"url", "ord":1, "coltype":"str", "nullable":1},
@@ -128,7 +128,7 @@
         {
             "name":"moz_historyvisits",
             "config":{
-                "query":"select a.id as hitoryvisitid, a.from_visit, a.place_id, a.visit_type, a.session, b.url, b.title, b.rev_host, b.visit_count, b.hidden, b.typed, b.frecency, b.last_visit_date, b.guid, b.foreign_count, b.url_hash, b.description, b.preview_image_url, b.origin_id, b.site_name from moz_historyvisits a join moz_places b on a.place_id = b.id",
+                "query":"select a.id as hitoryvisitid, a.from_visit, a.place_id, a.visit_type, a.session, b.url, b.title, b.rev_host, b.visit_count, b.hidden, b.typed, b.frecency, b.last_visit_date, b.guid, b.foreign_count, b.url_hash, b.description, b.preview_image_url, b.origin_id from moz_historyvisits a join moz_places b on a.place_id = b.id",
                 "fields":[
                     {"name":"hitoryvisitid", "ord":0,"coltype":"str", "nullable":1},
                     {"name":"from_visit", "ord":1,"coltype":"str", "nullable":1},
@@ -148,15 +148,14 @@
                     {"name":"url_hash", "ord":15,"coltype":"str", "nullable":1},
                     {"name":"description", "ord":16,"coltype":"str", "nullable":1},
                     {"name":"preview_image_url", "ord":17,"coltype":"str", "nullable":1},
-                    {"name":"origin_id", "ord":18,"coltype":"str", "nullable":1},
-                    {"name":"site_name", "ord":19,"coltype":"str", "nullable":1}
+                    {"name":"origin_id", "ord":18,"coltype":"str", "nullable":1}
                 ]
             }
         },
         {
             "name":"moz_annos",
             "config": {
-                "query": "select a.url, a.title, a.rev_host, a.visit_count, a.hidden, a.typed, a.frecency, a.last_visit_date, a.guid, a.foreign_count, a.url_hash, a.description, a.preview_image_url, a.origin_id, a.site_name, b.id, b.anno_attribute_id, b.content, b.flags, b.expiration, b.type, b.dateAdded, b.lastModified from moz_places a join moz_annos b on a.id=b.place_id",
+                "query": "select a.url, a.title, a.rev_host, a.visit_count, a.hidden, a.typed, a.frecency, a.last_visit_date, a.guid, a.foreign_count, a.url_hash, a.description, a.preview_image_url, a.origin_id, b.id, b.anno_attribute_id, b.content, b.flags, b.expiration, b.type, b.dateAdded, b.lastModified from moz_places a join moz_annos b on a.id=b.place_id",
                 "fields": [
                     {"name":"url", "ord":0,"coltype":"str", "nullable":1},
                     {"name":"title", "ord":1,"coltype":"str", "nullable":1},
@@ -172,15 +171,14 @@
                     {"name":"description", "ord":11,"coltype":"str", "nullable":1},
                     {"name":"preview_image_url", "ord":12,"coltype":"str", "nullable":1},
                     {"name":"origin_id", "ord":13,"coltype":"str", "nullable":1},
-                    {"name":"site_name", "ord":14,"coltype":"str", "nullable":1},
-                    {"name":"id", "ord":15,"coltype":"str", "nullable":1},
-                    {"name":"anno_attribute_id", "ord":16,"coltype":"str", "nullable":1},
-                    {"name":"content", "ord":17,"coltype":"str", "nullable":1},
-                    {"name":"flags", "ord":18,"coltype":"str", "nullable":1},
-                    {"name":"expiration","ord":19,"coltype":"moz_ts", "nullable":1},
-                    {"name":"type", "ord":20,"coltype":"str", "nullable":1},
-                    {"name":"dateAdded", "ord":21,"coltype":"moz_ts", "nullable":1},
-                    {"name":"lastModified", "ord":22,"coltype":"moz_ts", "nullable":1}
+                    {"name":"id", "ord":14,"coltype":"str", "nullable":1},
+                    {"name":"anno_attribute_id", "ord":15,"coltype":"str", "nullable":1},
+                    {"name":"content", "ord":16,"coltype":"str", "nullable":1},
+                    {"name":"flags", "ord":17,"coltype":"str", "nullable":1},
+                    {"name":"expiration","ord":18,"coltype":"moz_ts", "nullable":1},
+                    {"name":"type", "ord":19,"coltype":"str", "nullable":1},
+                    {"name":"dateAdded", "ord":20,"coltype":"moz_ts", "nullable":1},
+                    {"name":"lastModified", "ord":21,"coltype":"moz_ts", "nullable":1}
                 ]
             }
         },
